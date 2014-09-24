@@ -59,7 +59,7 @@ make_leaflet <- function(map_data,
                     fillOpacity: .6,
            })
           } !#")
-    L1$enablePopover(TRUE)
+    L1$enablePopover(FALSE)
     L1$fullScreen(TRUE)
     L1
 }
