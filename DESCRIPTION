@@ -1,0 +1,15 @@
+Package: pdquickmap
+Title: Make a map
+Version: 0.1
+Authors@R: "Tarak Shah <tarak_shah@berkeley.edu> [aut, cre]"
+Description: Just a simple package to quickly make maps in leaflet.js
+Depends:
+    R (>= 3.1.1)
+License: You can use it however you like
+LazyData: true
+Imports:
+    RgoogleMaps,
+    rCharts
+Suggests:
+    knitr
+VignetteBuilder: knitr
