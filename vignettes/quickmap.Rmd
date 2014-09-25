@@ -22,9 +22,9 @@ To get started, you'll need to have `devtools` installed in order to install
 packages from GitHub, and you'll need to instal a few other packages:
 
 ```{r install_packages, eval=FALSE}
-install.packages(c("devtools", "RGoogleMaps"))
-install_github('ramnathv/rCharts')
-install_github('tarakc02/pdquickmap')
+install.packages(c("devtools", "RgoogleMaps"))
+devtools::install_github('ramnathv/rCharts')
+devtools::install_github('tarakc02/pdquickmap')
 ```
 
 And finally, you'll need to load the `pdquickmap` library:
