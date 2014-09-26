@@ -1,11 +1,11 @@
 Package: pdquickmap
 Title: Make a map
 Version: 0.1.1
-Authors@R: "Tarak Shah <tarak_shah@berkeley.edu> [aut, cre]"
+Authors@R: as.person("Tarak Shah <tarak_shah@berkeley.edu> [aut, cre]")
 Description: Quickly make maps in leaflet.js
 Depends:
     R (>= 3.1.1)
-License: You can use it however you like
+License: MIT + file LICENSE
 LazyData: true
 Imports:
     RgoogleMaps,
