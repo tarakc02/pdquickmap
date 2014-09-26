@@ -52,9 +52,9 @@ Now we're ready to map, and for that we just need to run `make_leaflet`:
 make_leaflet(geo_data)
 ```
 
-```{r show_leaflet, echo=FALSE, comment=NA, results='asis', tidy=FALSE}
+```{r show_leaflet, echo=FALSE, comment=NA, results='asis', tidy=FALSE, message=FALSE}
 L <- make_leaflet(geo_data)
-L$show('iframesrc', cdn = TRUE)
+L$show('iframesrc', standalone = TRUE)
 ```
 
 Note the way that `make_leaflet` automatically added the data from the data frame into the popups on the map, so that whe you click on a dot you see the name, address, and so on (the "latitude" and "longitude" columns are automatically excluded). You may not want every single column of your data frame to be part of the popups on the map, though, and you can control this behavior by selecting the columns from your data that should be in the pop-up, using `popup_columns`: 
@@ -64,5 +64,5 @@ make_leaflet(geo_data, popup_columns = c("names", "giving"))
 ```
 ```{r show_leaflet2, echo=FALSE, comment=NA, results='asis', tidy=FALSE}
 L2 <- make_leaflet(geo_data, popup_columns = c("names", "giving"))
-L2$show('iframesrc', cdn=TRUE)
+L2$show('iframesrc', standalone=TRUE)
 ```

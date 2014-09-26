@@ -3,19 +3,21 @@
 \alias{geocode}
 \title{Get geo-codes from addresses}
 \usage{
-geocode(addresses, src = "google")
+geocode(addresses, src = "google", ...)
 }
 \arguments{
 \item{addresses}{A character vector of addresses}
 
-\item{src}{Which geo-coding API to use? Currently "google" is the only
-available option}
+\item{src}{Which geo-coding API to use? ("google" or "mapquest")}
 }
 \value{
 A \code{data.frame} with three columns: \code{address},
-\code{lat}, and \code{lon}
+\code{latitude}, and \code{longitude}
 }
 \description{
 Get geo-codes from addresses
+}
+\seealso{
+\code{\link{geocode_google}}, \code{\link{geocode_mapquest}}
 }
 

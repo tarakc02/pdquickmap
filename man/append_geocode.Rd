@@ -12,7 +12,7 @@ append_geocode(df, cols, ...)
 the address-related columns in the data. Ideally, these should be in a
 natural order (street, city, state, zip, country).}
 
-\item{...}{Other arguments passed to \code{geocode}}
+\item{...}{Other arguments passed to \code{\link{geocode}}}
 }
 \value{
 The original \code{data.frame} with the added columns \code{address},

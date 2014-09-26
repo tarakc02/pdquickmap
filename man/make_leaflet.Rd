@@ -5,7 +5,7 @@
 \usage{
 make_leaflet(map_data, width = 900, height = 600,
   map_center = as.numeric(map_data[1, c("latitude", "longitude")]),
-  default_zoom = 11)
+  default_zoom = 11, ...)
 }
 \arguments{
 \item{map_data}{Data frame to be mapped -- at the very least, this should
@@ -20,6 +20,8 @@ passed to the text popups}
 should be centered when it is first opened}
 
 \item{default_zoom}{The zoom level that the map will be at when first opened}
+
+\item{...}{Other arguments passed on to \code{\link{prep_leaf_data}}}
 }
 \description{
 Make a leaflet map
