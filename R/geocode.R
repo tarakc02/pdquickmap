@@ -1,6 +1,6 @@
 #' @import jsonlite
 geocode_mapquest_batch <- function(addresses, 
-                                   mapquest_key) {
+                                   key = api_key("mapquest")) {
     # build a search url
     geo_url <- "http://open.mapquestapi.com/geocoding/v1/batch/"
     loclist = paste("location=", addresses, sep="", collapse="&")
@@ -33,15 +33,15 @@ geocode_mapquest_batch <- function(addresses,
 #' Geocode addresses using the Mapquest Open Geocoding API
 #' 
 #' You will need an API key to use this function. You can request one from
-#' \link{http://developer.mapquest.com/web/products/open/geocoding-service}.
+#' \url{http://developer.mapquest.com/web/products/open/geocoding-service}.
 #' 
 #' @param addresses A character vector of addresses
-#' @param mapquest_key Your API key
+#' @param key Your mapquest API key
 #' @param batch Reserved for future use
 #' @param batch_size Addresses will be geocoded using the batch geocoding 
 #' service. The \code{batch_size} controls how large each batch should be.
 geocode_mapquest <- function(addresses, 
-                             mapquest_key, 
+                             key = api_key("mapquest"), 
                              batch = TRUE, 
                              batch_size = 100L) {
     
@@ -52,7 +52,7 @@ geocode_mapquest <- function(addresses,
     geocodes <- vector("list", num_batches)
     for (b in 1:num_batches) {
         geocodes[[b]] <- geocode_mapquest_batch(batched_addresses[[b]],
-                                                mapquest_key)
+                                                key)
         Sys.sleep(1)
     }
     do.call("rbind", geocodes)
@@ -60,9 +60,9 @@ geocode_mapquest <- function(addresses,
 
 #' Geocode addresses using the Google Maps API
 #' 
-#' This is \code{geocode} with \code{src = "google"}. Note that by using this 
+#' This is \code{geocode} with \code{provider = "google"}. Note that by using this 
 #' function, you're agreeing to the Google Maps API terms of service. See 
-#' \link{https://developers.google.com/maps/terms#section_10_12}.
+#' \url{https://developers.google.com/maps/terms#section_10_12}.
 #' 
 #' @note You will be limited to 2,500 addresses per 24-hour period.
 #' 
@@ -95,12 +95,12 @@ geocode_google <- function(addresses) {
 #' \code{latitude}, and \code{longitude}
 #' 
 #' @param addresses A character vector of addresses
-#' @param src Which geo-coding API to use? ("google" or "mapquest")
+#' @param provider Which geo-coding API to use? ("google" or "mapquest")
 #' 
 #' @seealso \code{\link{geocode_google}}, \code{\link{geocode_mapquest}}
 #' @export
-geocode <- function(addresses, src = "google", ...) {
-    switch(src, 
+geocode <- function(addresses, provider = "google", ...) {
+    switch(provider, 
            google = geocode_google(addresses),
            mapquest = geocode_mapquest(addresses, ...))
 }

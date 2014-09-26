@@ -6,7 +6,9 @@
 #' be used to populate the pop-ups on the map. By default, this will include all 
 #' columns except for the latitude and longitude columns. 
 prep_leaf_data <- function(geo_data, 
-                           popup_columns = colnames(geo_data)[!(colnames(geo_data) %in% c("latitude", "longitude"))]) {    
+                           popup_columns = NULL) {    
+    if (is.null(popup_columns)) 
+        popup_columns <-  colnames(geo_data)[!(colnames(geo_data) %in% c("latitude", "longitude"))]
     geo_data <- geo_data[complete.cases(geo_data),]
     leaf_map_data <- lapply(1:nrow(geo_data), function(x) {
         r <- as.list(geo_data[x,])
@@ -35,17 +37,19 @@ prep_leaf_data <- function(geo_data,
 #' @param width Width in pixels for the map
 #' @param height height in pixels for the map
 #' @param map_center A vector witht the latitude and longitude where the map 
-#' should be centered when it is first opened
+#' should be centered when it is first opened. Defaults to the lat/long of the 
+#' first row in \code{map_data}
 #' @param default_zoom The zoom level that the map will be at when first opened
 #' @param ... Other arguments passed on to \code{\link{prep_leaf_data}}
 #' @export
 make_leaflet <- function(map_data, 
                          width = 900,
                          height = 600,
-                         map_center = as.numeric(map_data[1,c("latitude", "longitude")]),
+                         map_center = NULL,
                          default_zoom = 11, 
                          ...) {
-    
+    map_data <- map_data[complete.cases(map_data),]
+    if (is.null(map_center)) map_center <- as.numeric(map_data[1,c("latitude", "longitude")])
     leaf_map_data <- prep_leaf_data(map_data, ...)
     
     L1 <- Leaflet$new()

@@ -3,8 +3,7 @@
 \alias{make_leaflet}
 \title{Make a leaflet map}
 \usage{
-make_leaflet(map_data, width = 900, height = 600,
-  map_center = as.numeric(map_data[1, c("latitude", "longitude")]),
+make_leaflet(map_data, width = 900, height = 600, map_center = NULL,
   default_zoom = 11, ...)
 }
 \arguments{
@@ -17,7 +16,8 @@ passed to the text popups}
 \item{height}{height in pixels for the map}
 
 \item{map_center}{A vector witht the latitude and longitude where the map
-should be centered when it is first opened}
+should be centered when it is first opened. Defaults to the lat/long of the
+first row in \code{map_data}}
 
 \item{default_zoom}{The zoom level that the map will be at when first opened}
 
