@@ -1,6 +1,6 @@
 Package: pdquickmap
 Title: Make a map
-Version: 0.1.2
+Version: 0.1.2.1
 Authors@R: as.person("Tarak Shah <tarak_shah@berkeley.edu> [aut, cre]")
 Description: Quickly make maps in leaflet.js
 Depends:

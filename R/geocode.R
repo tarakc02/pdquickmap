@@ -1,11 +1,12 @@
 #' @import jsonlite
 geocode_mapquest_batch <- function(addresses, 
                                    key = api_key("mapquest")) {
+    options(warn=-1)
     # build a search url
     geo_url <- "http://open.mapquestapi.com/geocoding/v1/batch/"
     loclist = paste("location=", addresses, sep="", collapse="&")
     
-    query <- list(key = mapquest_key,
+    query <- list(key = key,
                   maxResults = 1L,
                   thumbMaps = "false",
                   Format = "kvp")
@@ -19,8 +20,11 @@ geocode_mapquest_batch <- function(addresses,
     
     # fill in blank data frames with NA to keep lat/lng frames same dimensions
     # as the original address vector
+    
     latlng <- lapply(resp$results$locations, 
-                     function(x) x$latLng[,c("lat", "lng")])
+                     function(x) if(length(x) == 0) {
+                         data.frame(lat = NA_real_, lng = NA_real_)} else {
+                             x$latLng[,c("lat", "lng")]})
     latlng[sapply(latlng, is.null)] <- data.frame(lat = NA_real_, lng = NA_real_)
     latlng <- do.call("rbind", latlng)
     
