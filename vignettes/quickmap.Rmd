@@ -2,11 +2,7 @@
 title: "Quick Maps for Prospect Development"
 author: "Tarak Shah"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Quick maps with pdquickmap}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\usepackage[utf8]{inputenc}  
+output: html_document
 ---
 ```{r,  echo=FALSE}
 library(knitr)
