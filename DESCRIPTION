@@ -1,6 +1,6 @@
 Package: pdquickmap
 Title: Make a map
-Version: 0.1.2.1
+Version: 0.1.3.9001
 Authors@R: as.person("Tarak Shah <tarak_shah@berkeley.edu> [aut, cre]")
 Description: Quickly make maps in leaflet.js
 Depends:
@@ -8,10 +8,11 @@ Depends:
 License: MIT + file LICENSE
 LazyData: true
 Imports:
-    RgoogleMaps,
-    rCharts,
     jsonlite,
-    base64enc
+    leaflet,
+    htmlwidgets,
+    htmltools
 Suggests:
     knitr
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1

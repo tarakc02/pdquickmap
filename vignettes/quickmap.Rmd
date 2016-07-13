@@ -6,7 +6,7 @@ output: html_document
 ---
 ```{r,  echo=FALSE}
 library(knitr)
-opts_chunk$set(cache=TRUE, cache.path = 'DocumentName_cache/', fig.path='figure/')
+#opts_chunk$set(cache=TRUE, cache.path = 'DocumentName_cache/', fig.path='figure/')
 ```
 
 `pdquickmap` is a small tool to make it easier to visualize geographic data. 
@@ -18,8 +18,7 @@ To get started, you'll need to have `devtools` installed in order to install
 packages from GitHub, and you'll need to instal a few other packages:
 
 ```{r install_packages, eval=FALSE}
-install.packages(c("devtools", "RgoogleMaps"))
-devtools::install_github('ramnathv/rCharts')
+install.packages(c("devtools", "htmlwidgets", "htmltools", "jsonlite"))
 devtools::install_github('tarakc02/pdquickmap')
 ```
 
@@ -44,21 +43,12 @@ geo_data
 
 Now we're ready to map, and for that we just need to run `make_leaflet`: 
 
-```{r make_leaflet, eval=FALSE}
+```{r make_leaflet}
 make_leaflet(geo_data)
-```
-
-```{r show_leaflet, echo=FALSE, comment=NA, results='asis', tidy=FALSE, message=FALSE}
-L <- make_leaflet(geo_data)
-L$show('iframesrc', standalone = TRUE)
 ```
 
 Note the way that `make_leaflet` automatically added the data from the data frame into the popups on the map, so that whe you click on a dot you see the name, address, and so on (the "latitude" and "longitude" columns are automatically excluded). You may not want every single column of your data frame to be part of the popups on the map, though, and you can control this behavior by selecting the columns from your data that should be in the pop-up, using `popup_columns`: 
 
-```{r make_leaflet2, eval=FALSE}
-make_leaflet(geo_data, popup_columns = c("names", "giving"))
-```
-```{r show_leaflet2, echo=FALSE, comment=NA, results='asis', tidy=FALSE}
-L2 <- make_leaflet(geo_data, popup_columns = c("names", "giving"))
-L2$show('iframesrc', standalone=TRUE)
+```{r make_leaflet2, eval=TRUE, results = 'asis'}
+#make_leaflet(geo_data, popup_columns = c("names", "giving"))
 ```

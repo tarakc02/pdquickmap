@@ -121,7 +121,12 @@ geocode <- function(addresses, provider = "google", ...) {
 #' \code{lat}, and \code{lon}
 #' @export
 append_geocode <- function(df, cols, ...) {
-    addresses <- do.call("paste", df[,cols])
+    unrecognized_columns <- !cols %in% colnames(df)
+    if (any(unrecognized_columns))
+        stop("These columns are not recognized: ", 
+             paste(cols[unrecognized_columns], collapse = ", "))
+    
+    addresses <- do.call("paste", df[,cols, drop = FALSE])
     gc <- geocode(addresses, ...)
     cbind(df, gc[2:3])
 }
