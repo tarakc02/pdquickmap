@@ -1,4 +1,3 @@
-#' @import jsonlite
 geocode_mapquest_batch <- function(addresses, 
                                    key = api_key("mapquest")) {
     options(warn=-1)
@@ -74,7 +73,6 @@ geocode_mapquest <- function(addresses,
 #' @return A data frame with three columns: \code{address}, \code{latitude},
 #' and \code{longitude}.
 #' 
-#' @import RgoogleMaps
 geocode_google <- function(addresses) {
     geocodes <- vector("list", length=length(addresses))
     

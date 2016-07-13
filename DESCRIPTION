@@ -11,7 +11,8 @@ Imports:
     jsonlite,
     leaflet,
     htmlwidgets,
-    htmltools
+    htmltools,
+    RgoogleMaps
 Suggests:
     knitr
 VignetteBuilder: knitr
