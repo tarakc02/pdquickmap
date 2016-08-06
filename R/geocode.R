@@ -126,5 +126,10 @@ append_geocode <- function(df, cols, ...) {
     
     addresses <- do.call("paste", df[,cols, drop = FALSE])
     gc <- geocode(addresses, ...)
-    cbind(df, gc[2:3])
+    res <- cbind(df, gc[2:3])
+    na_indices <- is.na(res$latitude) | is.na(res$longitude)
+    na_cnt <- sum(na_indices)
+    if (any(na_indices)) 
+        warning("could not geocode ", na_cnt, " rows, so dropped them from the results")
+    res[!na_indices, , drop = FALSE]
 }
