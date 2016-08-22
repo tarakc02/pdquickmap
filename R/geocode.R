@@ -78,7 +78,7 @@ geocode_google <- function(addresses) {
     
     for (a in 1:length(addresses)) {
         if(!(a %% 5L))  Sys.sleep(1L)
-        geocodes[[a]] <- RgoogleMaps::getGeoCode(addresses[a])
+        geocodes[[a]] <- get_google_geocode(addresses[a])
         names(geocodes)[a] <- addresses[a]
     }
     
@@ -130,6 +130,7 @@ append_geocode <- function(df, cols, ...) {
     na_indices <- is.na(res$latitude) | is.na(res$longitude)
     na_cnt <- sum(na_indices)
     if (any(na_indices)) 
-        warning("could not geocode ", na_cnt, " rows, so dropped them from the results")
+        warning("could not geocode ", na_cnt, " rows, so dropped them from the results. ",
+                "The problematic addresses:\n", paste(addresses[na_indices], collapse = "\n"))
     res[!na_indices, , drop = FALSE]
 }

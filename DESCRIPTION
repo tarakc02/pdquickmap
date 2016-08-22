@@ -1,6 +1,6 @@
 Package: pdquickmap
 Title: Make a map
-Version: 0.1.4.9001
+Version: 0.1.4.9002
 Authors@R: as.person("Tarak Shah <tarak_shah@berkeley.edu> [aut, cre]")
 Description: Quickly make maps in leaflet.js
 Depends:
@@ -12,7 +12,7 @@ Imports:
     leaflet,
     htmlwidgets,
     htmltools,
-    RgoogleMaps
+    httr
 Suggests:
     knitr
 VignetteBuilder: knitr
